@@ -1,0 +1,8 @@
+Revisi bank sampah :
+- Tampilan lebih ergonomis / aero
+- Pada data nasabah admin bisa melihat rincian saldo user dari jenis sampah apa saja dan jenis sampah apa saja yang didaftarkan
+- Ketika setor sampah buat lebih spesifik timbangannya menggunakkan desimal sesuai harga misal 1,5 kg = ?
+- Transaksi setor sampah munculkan namanya dan buat dokumen tanda  terima yang bisa di priint
+- Transaksi tarik saldo munculkan namanya dan buat dokumen tanda terima yang bisa di print
+- buat menu pada penarikan tabungan bank sampah untuk konversi apakah ingin mencairkannya dengan uang atau dengan jenis-jenis sembako.
+- Register untuk user dibuatkan dengan verifikasi menggunakan e-mail
