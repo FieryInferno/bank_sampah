@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jun 2021 pada 04.58
+-- Waktu pembuatan: 15 Jun 2021 pada 05.59
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -66,7 +66,7 @@ CREATE TABLE `nasabah` (
 --
 
 INSERT INTO `nasabah` (`nin`, `nama`, `rt`, `alamat`, `telepon`, `email`, `password`, `saldo`, `sampah`) VALUES
-('NSB1712001', 'Ihsmi ', 2, 'Jl. murai 8, C.45/4', '085617287718', 'ihsmiica@gmail.com', 'user123', 12000, 2),
+('NSB1712001', 'Ihsmi ', 2, 'Jl. murai 8, C.45/4', '085617287718', 'ihsmiica@gmail.com', 'user123', 10700, 2),
 ('NSB1712002', 'Sabrina  ', 4, 'Jl. murai 8, C.45/4', '085617287718', 'sabrina123@gmail.com', '12345678', 0, 0);
 
 -- --------------------------------------------------------
@@ -110,6 +110,13 @@ CREATE TABLE `setor` (
   `dokumen_tanda_terima` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `setor`
+--
+
+INSERT INTO `setor` (`id_setor`, `tanggal_setor`, `nin`, `jenis_sampah`, `berat`, `harga`, `total`, `nia`, `dokumen_tanda_terima`) VALUES
+(38, '2021-06-14', 'NSB1712001', 'HVS', 1, 9000, 11700, 'ADM171201', '60c821a619434.pdf');
+
 -- --------------------------------------------------------
 
 --
@@ -122,8 +129,16 @@ CREATE TABLE `tarik` (
   `nin` varchar(10) NOT NULL,
   `saldo` int(7) NOT NULL,
   `jumlah_tarik` int(7) NOT NULL,
-  `nia` varchar(9) NOT NULL
+  `nia` varchar(9) NOT NULL,
+  `dokumen_tanda_terima` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tarik`
+--
+
+INSERT INTO `tarik` (`id_tarik`, `tanggal_tarik`, `nin`, `saldo`, `jumlah_tarik`, `nia`, `dokumen_tanda_terima`) VALUES
+(11, '2021-06-15', 'NSB1712001', 11700, 1000, 'ADM171201', '60c823b9c06d4.pdf');
 
 --
 -- Indexes for dumped tables
@@ -167,13 +182,13 @@ ALTER TABLE `tarik`
 -- AUTO_INCREMENT untuk tabel `setor`
 --
 ALTER TABLE `setor`
-  MODIFY `id_setor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_setor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `tarik`
 --
 ALTER TABLE `tarik`
-  MODIFY `id_tarik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_tarik` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
