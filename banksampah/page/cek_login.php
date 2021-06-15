@@ -1,12 +1,10 @@
-
-		<?php
-include '../system/config/koneksi.php';
+<?php
+  include '../system/config/koneksi.php';
 		if(isset($_POST['login'])){
 			$user = mysqli_real_escape_string($conn, $_POST['user']);
 			$pass = mysqli_real_escape_string($conn, $_POST['pass']);
 
-
-			$data_admin = mysqli_query($conn, "SELECT * FROM admin WHERE nia = '$user' AND password = '$pass'");
+			$data_admin   = mysqli_query($conn, "SELECT * FROM admin WHERE nia = '$user' AND password = '$pass'");
 			$data_nasabah = mysqli_query($conn, "SELECT * FROM nasabah WHERE nin = '$user' AND password = '$pass'");
 
 			$n = mysqli_fetch_array($data_nasabah);

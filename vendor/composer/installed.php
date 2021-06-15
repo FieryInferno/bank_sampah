@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '173e64cf6b0778d7cb77e30bf966b35ee0f783a7',
+        'reference' => '5c45a5e0aab9adef36d53b04c1977a22693eda94',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '173e64cf6b0778d7cb77e30bf966b35ee0f783a7',
+            'reference' => '5c45a5e0aab9adef36d53b04c1977a22693eda94',
             'dev_requirement' => false,
         ),
         'dompdf/dompdf' => array(
@@ -44,6 +44,15 @@
             'install_path' => __DIR__ . '/../phenx/php-svg-lib',
             'aliases' => array(),
             'reference' => '5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.4.1',
+            'version' => '6.4.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => '9256f12d8fb0cd0500f93b19e18c356906cbed3d',
             'dev_requirement' => false,
         ),
         'sabberworm/php-css-parser' => array(
