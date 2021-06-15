@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jun 2021 pada 05.59
+-- Waktu pembuatan: 15 Jun 2021 pada 09.39
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -58,16 +58,18 @@ CREATE TABLE `nasabah` (
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
   `saldo` int(8) DEFAULT NULL,
-  `sampah` int(4) DEFAULT NULL
+  `sampah` int(4) DEFAULT NULL,
+  `status` enum('belum_verifikasi','verifikasi') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `nasabah`
 --
 
-INSERT INTO `nasabah` (`nin`, `nama`, `rt`, `alamat`, `telepon`, `email`, `password`, `saldo`, `sampah`) VALUES
-('NSB1712001', 'Ihsmi ', 2, 'Jl. murai 8, C.45/4', '085617287718', 'ihsmiica@gmail.com', 'user123', 10700, 2),
-('NSB1712002', 'Sabrina  ', 4, 'Jl. murai 8, C.45/4', '085617287718', 'sabrina123@gmail.com', '12345678', 0, 0);
+INSERT INTO `nasabah` (`nin`, `nama`, `rt`, `alamat`, `telepon`, `email`, `password`, `saldo`, `sampah`, `status`) VALUES
+('NSB1712001', 'Ihsmi ', 2, 'Jl. murai 8, C.45/4', '085617287718', 'ihsmiica@gmail.com', 'user123', 10700, 2, 'verifikasi'),
+('NSB1712002', 'Sabrina  ', 4, 'Jl. murai 8, C.45/4', '085617287718', 'sabrina123@gmail.com', '12345678', 0, 0, 'verifikasi'),
+('NSB2106003', 'M. Bagas Setia Perma', 9, 'Kp. Pasir Gombong', '085723853284', 'bagassetia271@gmail.com', '12345678', 0, 0, 'verifikasi');
 
 -- --------------------------------------------------------
 
