@@ -6,49 +6,50 @@
 	<link rel="stylesheet" type="text/css" href="../datatables/css/jquery.dataTables.css">
 	<style>
 		label{
-        font-family: Montserrat;    
-        font-size: 18px;
-        display: block;
-        color: #262626;
-        }
-
+      font-family: Montserrat;    
+      font-size: 18px;
+      display: block;
+      color: #262626;
+    }
 	</style>
 </head>
 <body>
 	<h2 style="font-size: 30px; color: #262626;">Transaksi Tarik Saldo</h2>
 	<br>
 	<table id="example" class="display" cellspacing="0" width="100%" border="0" >
-        <thead>
-        <tr>
-            <th>No</th>
-            <th>ID</th>
-            <th>Tanggal</th>
-            <th>NIN</th>
-            <th>Saldo</th>
-            <th>Jumlah Tarik</th>
-            <th>NIA</th>
-            <th>Aksi</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th>No</th>
-            <th>ID</th>
-            <th>Tanggal</th>
-            <th>NIN</th>
-            <th>Saldo</th>
-            <th>Jumlah Tarik</th>
-            <th>NIA</th>
-            <th>Aksi</th>       
-        </tr>   
-        </tfoot>
-        <tbody>
-        <?php
-            $no = 0;
-            $query = mysqli_query($conn, "SELECT * FROM tarik ORDER BY id_tarik ASC");
-            while($row = mysqli_fetch_assoc($query)){$no++;
-        ?>
-        <tr align="center">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Tanggal</th>
+        <th>NIN</th>
+        <th>Saldo</th>
+        <th>Jumlah Tarik</th>
+        <th>NIA</th>
+        <th>Dokumen Tanda Terima</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Tanggal</th>
+        <th>NIN</th>
+        <th>Saldo</th>
+        <th>Jumlah Tarik</th>
+        <th>NIA</th>
+        <th>Dokumen Tanda Terima</th>
+        <th>Aksi</th>       
+      </tr>   
+    </tfoot>
+    <tbody>
+      <?php
+        $no     = 0;
+        $query  = mysqli_query($conn, "SELECT * FROM tarik ORDER BY id_tarik ASC");
+        while($row = mysqli_fetch_assoc($query)){
+          $no++; ?>
+          <tr align="center">
             <td><?php echo "$no" ?></td>
             <td><?php echo $row['id_tarik'] ?></td>
             <td><?php echo $row['tanggal_tarik'] ?></td>
@@ -56,20 +57,18 @@
             <td><?php echo "Rp. ".number_format($row['saldo'], 2, ",", ".")  ?></td>
             <td><?php echo "Rp. ".number_format($row['jumlah_tarik'], 2, ",", ".")  ?></td>
             <td><?php echo $row['nia'] ?></td>
+            <td><a href="../asset/<?= $row['dokumen_tanda_terima']; ?>" target="_blank"><button>Lihat</button></a></td>
             <td>
-                
-                <a href="a">
-                <button><i class="fa fa-pencil"></i>edit</button> 
-                </a>
-
-                <a onclick="return confirm('Anda yakin ingin menghapus data ini?')" href="../system/function/delete-tarik.php?id=<?php echo $row['id_tarik']; ?>">
-                <button><i class="fa fa-trash-o"></i>hapus</button>
-                </a>
-
+              <a href="a">
+              <button><i class="fa fa-pencil"></i>edit</button> 
+              </a>
+              <a onclick="return confirm('Anda yakin ingin menghapus data ini?')" href="../system/function/delete-tarik.php?id=<?php echo $row['id_tarik']; ?>">
+              <button><i class="fa fa-trash-o"></i>hapus</button>
+              </a>
             </td>
-        </tr>
-        <?php } ?>
-        </tbody>
+          </tr>
+      <?php } ?>
+    </tbody>
     </table>
     <br>
     <br>
