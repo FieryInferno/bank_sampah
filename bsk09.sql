@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jun 2021 pada 12.16
+-- Waktu pembuatan: 15 Jun 2021 pada 04.58
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -106,16 +106,9 @@ CREATE TABLE `setor` (
   `berat` int(4) NOT NULL,
   `harga` int(6) NOT NULL,
   `total` int(8) NOT NULL,
-  `nia` varchar(9) NOT NULL
+  `nia` varchar(9) NOT NULL,
+  `dokumen_tanda_terima` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `setor`
---
-
-INSERT INTO `setor` (`id_setor`, `tanggal_setor`, `nin`, `jenis_sampah`, `berat`, `harga`, `total`, `nia`) VALUES
-(30, '2021-06-14', 'NSB1712001', 'HVS', 1, 9000, 9000, 'ADM171201'),
-(31, '2021-06-14', 'NSB1712001', 'kaleng', 1, 3000, 3000, 'ADM171201');
 
 -- --------------------------------------------------------
 
@@ -174,7 +167,7 @@ ALTER TABLE `tarik`
 -- AUTO_INCREMENT untuk tabel `setor`
 --
 ALTER TABLE `setor`
-  MODIFY `id_setor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_setor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `tarik`

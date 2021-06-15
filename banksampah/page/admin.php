@@ -125,6 +125,9 @@ include_once("../system/config/koneksi.php");
                 break;
               case 'tambah-data-sampah':
                 include "../system/function/tambah-sampah.php";
+                break;	
+              case 'tanda_terima':
+                include "../system/function/tanda_terima.php";
                 break;			
               default:
                 echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";

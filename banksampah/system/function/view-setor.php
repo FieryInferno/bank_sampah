@@ -27,6 +27,7 @@
         <th>Harga</th>
         <th>Total</th>
         <th>NIA</th>
+        <th>Dokumen Tanda Terima</th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -40,6 +41,7 @@
           <th>Harga</th>
           <th>Total</th>
           <th>NIA</th>
+          <th>Dokumen Tanda Terima</th>
           <th>Aksi</th>       
       </tr>   
     </tfoot>
@@ -57,6 +59,7 @@
           <td><?php echo "Rp. ".number_format($row['harga'], 2, ",", ".")  ?></td>
           <td><?php echo "Rp. ".number_format($row['total'], 2, ",", ".")  ?></td>
           <td><?php echo $row['nia'] ?></td>
+          <td><a href="../asset/<?= $row['dokumen_tanda_terima']; ?>" target="_blank"><button>Lihat</button> </a></td>
           <td>
             <a href="admin.php?page=edit-setor&id=<?php echo $row['id_setor']; ?>">
             <button><i class="fa fa-pencil"></i>edit</button> 

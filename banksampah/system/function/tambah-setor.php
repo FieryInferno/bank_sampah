@@ -1,15 +1,35 @@
 <?php
+  require_once("../../vendor/autoload.php");
+  use Dompdf\Dompdf;
+  use Dompdf\Options;
   if (isset($_POST['simpan'])) {
     require_once("../system/config/koneksi.php");
-    $tanggal_setor  = $_POST['tanggal_setor'];
-    $nin            = $_POST['nin'];
-    $jenis_sampah   = $_POST['jenis_sampah'];
-    $berat          = $_POST['berat'];
-    $harga          = $_POST['harga'];
-    $total          = $_POST['total'];
-    $nia            = $_POST['nia'];
-    $query          = "INSERT INTO setor(id_setor,tanggal_setor,nin,jenis_sampah,berat,harga,total,nia) VALUE ('NULL','$tanggal_setor','$nin','$jenis_sampah','$berat','$harga','$total','$nia')";
-    $queryact       = mysqli_query($conn, $query);
+    ob_start();
+      include "../system/function/dokumen_tanda_terima.php";
+      $html = ob_get_contents();
+    ob_end_clean();
+    ob_clean();
+    $filename = uniqid();
+    $options  = new Options();
+    $options->set('isRemoteEnabled', TRUE);
+    $dompdf = new Dompdf($options);
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('legal', 'potrait');
+    $dompdf->render();
+    $output = $dompdf->output();
+    file_put_contents('../asset/' . $filename . '.pdf', $output);
+
+    $tanggal_setor        = $_POST['tanggal_setor'];
+    $nin                  = $_POST['nin'];
+    $jenis_sampah         = $_POST['jenis_sampah'];
+    $berat                = $_POST['berat'];
+    $harga                = $_POST['harga'];
+    $total                = $_POST['total'];
+    $nia                  = $_POST['nia'];
+    $dokumen_tanda_terima = $filename . '.pdf';
+    $query                = "INSERT INTO setor(id_setor, tanggal_setor, nin, jenis_sampah, berat, harga, total, nia, dokumen_tanda_terima) VALUE ('NULL', '$tanggal_setor', '$nin', '$jenis_sampah', '$berat', '$harga', '$total', '$nia', '$dokumen_tanda_terima')";
+    $queryact             = mysqli_query($conn, $query);
+
     echo "
       <script>
         alert('Selamat berhasil input data!');
@@ -102,7 +122,7 @@
         daftar_user.berat.focus(); 
         return false;
       }
-      if (!x.match(angka)) {
+      if (!IsNumeric(x)) {
        alert ("Berat sampah harus di input angka!");
           daftar_user.berat.focus();
           return false;
@@ -181,7 +201,7 @@
         <?php 
           $query  = mysqli_query($conn, "SELECT * FROM nasabah");
           while ($row = mysqli_fetch_array($query)) {
-            echo '<option value="' . $row['nin'] . '">' . $row['nin'] . '</option>';
+            echo '<option value="' . $row['nin'] . '">' . $row['nin'] . ' - ' . $row['nama'] . '</option>';
           }
         ?>
       </select>
