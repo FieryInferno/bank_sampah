@@ -126,10 +126,10 @@
     
     $(document).ready(function(){ // Ketika halaman sudah diload dan siap
       $("#btn-tambah-form").click(function(){ // Ketika tombol Tambah Data Form di klik
-        var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
-        var nextform = jumlah + 1; // Tambah 1 untuk jumlah form nya
-        var berat =  parseInt($("#berat2").val());
-        var hargatotal = berat * 5000;
+        var jumlah      = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
+        var nextform    = jumlah + 1; // Tambah 1 untuk jumlah form nya
+        var berat       =  parseInt($("#berat2").val());
+        var hargatotal  = berat * 5000;
         // Kita akan menambahkan form dengan menggunakan append
         // pada sebuah tag div yg kita beri id insert-form
         $("#insert-form").append("<b>Data ke " + nextform + " :</b>" +
@@ -212,37 +212,32 @@
       <label class="">Total (Rp)</label>
       <input type="text" placeholder="Otomatis terisi" style="cursor: not-allowed;" id="total"  name="total" readonly />
     </div>
-         <div class="form-group">
-          <label class="">Nomor Induk Admin</label>
-          <input type="text" style="cursor: not-allowed;" name="nia" value="<?php echo $_SESSION["nia"]; ?>" readonly />
-         </div>
-         
-         <input type="submit" name="simpan" value="Simpan" />
-
+    <div class="form-group">
+      <label class="">Nomor Induk Admin</label>
+      <input type="text" style="cursor: not-allowed;" name="nia" value="<?php echo $_SESSION["nia"]; ?>" readonly />
+    </div>
+    <input type="submit" name="simpan" value="Simpan" />
 		<div id="insert-form"></div>
-		
 		<hr>
 	</form>
-	
 	<!-- Kita buat textbox untuk menampung jumlah data form -->
 	<input type="hidden" id="jumlah-form" value="1">
-	
-        <script type="text/javascript">    
-          <?php echo $jsArray; ?>  
-          function changeValue(jenis_sampah){
-          console.log(dtsampah);  
-          document.getElementById('harga').value = dtsampah[jenis_sampah]['harga'];
-          sum();  
-          };
+  <script type="text/javascript">    
+    <?php echo $jsArray; ?>  
+    function changeValue(jenis_sampah){
+      console.log(dtsampah);  
+      document.getElementById('harga').value = dtsampah[jenis_sampah]['harga'];
+      sum();  
+    };
 
-          function sum() {
-          var txtFirstNumberValue = document.getElementById('berat').value;
-          var txtSecondNumberValue = document.getElementById('harga').value;
-          var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
-          if (!isNaN(result)) {
-             document.getElementById('total').value = result;
-          }
-          }  
+    function sum() {
+      var txtFirstNumberValue   = document.getElementById('berat').value;
+      var txtSecondNumberValue  = document.getElementById('harga').value;
+      var result                = parseFloat(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
+      if (!isNaN(result)) {
+        document.getElementById('total').value = result;
+      }
+    }  
 
            </script>
            <script src="js/jquery.min.js"></script>
